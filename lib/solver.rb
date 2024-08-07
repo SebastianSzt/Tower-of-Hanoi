@@ -1,4 +1,10 @@
+# Solves the Towers of Hanoi puzzle
+#
+# The `Solver` class manages the state of the Towers of Hanoi puzzle and solves it by moving disks between towers.
 class Solver
+  # Initializes a new solver with the given number of disks
+  #
+  # @param num_disks [Integer] the number of disks to be used in the puzzle
   def initialize(num_disks)
     @num_disks = num_disks
     # Initialize three towers for the game
@@ -17,6 +23,9 @@ class Solver
     end
   end
 
+  # Starts the process of solving the Towers of Hanoi puzzle
+  #
+  # This method prints the initial state of the towers and then recursively solves the puzzle
   def solve
     # Print the initial state of the towers
     print_towers
@@ -26,7 +35,12 @@ class Solver
 
   private
 
-  # Recursive method to move disks between towers
+  # Recursively moves disks between towers
+  #
+  # @param num_disks [Integer] the number of disks to move
+  # @param source_tower [Tower] the tower from which disks are moved
+  # @param auxiliary_tower [Tower] the tower used as an intermediate step
+  # @param target_tower [Tower] the tower to which disks are moved
   def move_disks(num_disks, source_tower, auxiliary_tower, target_tower)
     return unless num_disks.positive?
 
@@ -40,14 +54,19 @@ class Solver
     move_disks(num_disks - 1, auxiliary_tower, source_tower, target_tower)
   end
 
-  # Move a single disk from the source tower to the target tower
+  # Moves a single disk from the source tower to the target tower
+  #
+  # @param source_tower [Tower] the tower from which the disk is removed
+  # @param target_tower [Tower] the tower to which the disk is added
   def move_single_disk(source_tower, target_tower)
     disk = source_tower.remove_disk
     target_tower.add_disk(disk)
     print_towers
   end
 
-  # Print the current state of all towers to the console
+  # Prints the current state of all towers to the console
+  #
+  # This method clears the screen and displays each level of the towers side by side.
   def print_towers
     system('clear') || system('cls')
 
