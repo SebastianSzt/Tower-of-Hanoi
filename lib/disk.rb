@@ -7,6 +7,6 @@ class Disk
   end
 
   def to_s
-    ('=' * (@size * 2 - 1)).prepend('<').concat('>').colorize(@color)
+    ('=' * (@size * 2 - 1)).prepend('<').concat('>')
   end
 end
